@@ -8,7 +8,9 @@ RUN chown -R jboss:jboss /home/jboss \
 COPY uid_entrypoint /home/jboss/
 RUN chmod g=u /etc/passwd && chmod 775 /home/jboss/uid_entrypoint
 RUN chown -R 10001:0 /home/jboss/ && chmod 777 -R /home/
-ENTRYPOINT ["/home/jboss/uid_entrypoint"]
+
 USER jboss
+WORKDIR /home/jboss
+ENTRYPOINT ["/home/jboss/uid_entrypoint"]
 CMD ["/bin/bash", "-c", "sleep infinity"]
 # CMD ["/bin/bash", "-c", "--", "while true; do sleep 30; done;"]
