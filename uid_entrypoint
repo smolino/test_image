@@ -1,0 +1,8 @@
+#!/bin/sh
+if ! whoami &> /dev/null; then
+  if [ -w /etc/passwd ]; then
+    export HOME=${HOME:-/home/jboss} USER_NAME=${USER_NAME:-jboss}
+    echo "${USER_NAME}:x:$(id -u):0:${USER_NAME} User:${HOME}:/bin/bash" >> /etc/passwd
+  fi
+fi
+exec "$@"
