@@ -7,7 +7,7 @@ RUN chown -R jboss:jboss /home/jboss \
     && chmod 777 -R /home/jboss/
 COPY uid_entrypoint /home/jboss/
 RUN chmod g=u /etc/passwd && chmod 775 /home/jboss/uid_entrypoint
-RUN chown -R 10001:0 /home/jboss/ && chmod 777 -R /home/
+RUN chown -R 1001:1001 /home/jboss/ && chmod 777 -R /home/
 
 USER jboss
 WORKDIR /home/jboss
